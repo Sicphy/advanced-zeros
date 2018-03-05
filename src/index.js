@@ -1,20 +1,21 @@
 module.exports = function getZerosCount(number, base) {
   // your implementation
     var arr = [];
-    var fl = 0;
+    var arrs = [];
+    var temp2 = 0;
     var tempBase = base;
     var tempNumber = number;
 
     for(var i = 2, j = 0;i<=tempBase;) {
         if(base % i === 0) {
-            fl++;
-            arr[j] = i;
+            temp2++;
             base /= i;
         }
-        
         else {
-            if(fl) {
-                fl = 0;
+            if(temp2) {
+                arr[j] = i;
+                arrs[j] = temp2;
+                temp2 = 0;
                 j++;
             }
             i++;
@@ -39,11 +40,11 @@ module.exports = function getZerosCount(number, base) {
         number = tempNumber;
     }
 
-    temp = array[0];
+    temp = array[0]/arrs[0];
 
     for(var i = 1; i<arr.length;i++)
-        temp = Math.min(temp,array[i]);
+        temp = Math.min(temp,array[i]/arrs[i]);
 
-  return temp;
+  return parseInt(temp);
 
 }
